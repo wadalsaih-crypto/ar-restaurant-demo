@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>AR Cake Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<script>
+const model = "cake.glb";
+
+const isAndroid = /Android/i.test(navigator.userAgent);
+const isiPhone = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+if (isAndroid) {
+
+  window.location.href =
+  "intent://arvr.google.com/scene-viewer/1.0?file=" +
+  encodeURIComponent(window.location.origin + "/" + model) +
+  "&mode=ar_preferred#Intent;scheme=https;package=com.google.android.googlequicksearchbox;end";
+
+}
+
+else if (isiPhone) {
+
+  window.location.href = "cake.usdz";
+
+}
+
+else {
+
+  document.body.innerHTML =
+  "<h2>Please open this link on a mobile phone to view AR</h2>";
+
+}
+</script>
+
+</body>
+</html>
